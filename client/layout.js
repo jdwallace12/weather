@@ -3,9 +3,9 @@ Template.layout.helpers({
         var city = Session.get('city');
         Meteor.call('getTemps', city, function(err, results) {
             console.log(results.content);
-            Session.set('temps',JSON.parse(results.content).weather[0].description);
+            Session.set('temps',JSON.parse(results.content).main.temp);
         });
-        return (Session.get('temps') + ' in ' + city );
+        return (Session.get('temps') + ' degrees ' + ' in ' + city );
     }
 });
 
